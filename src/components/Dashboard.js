@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import dashboard from "../dashboard.svg"
-import boneMarrow from "../bone marrow.svg"
-import anethesiology from "../anesthesiology.svg"
-import cardiacSurgery from "../cardiac surgery.svg"
-import ent from "../e.n.t.svg"
-import cosmetology from "../cosmetology.svg"
-import Clinical from "../clinical nutrition & dietetics.svg"
 import { Box, Card, CardActionArea, CardContent, CardMedia, Grid, Link, Typography } from '@mui/material'
 import axios from 'axios'
 import ClipLoader from "react-spinners/ClipLoader";

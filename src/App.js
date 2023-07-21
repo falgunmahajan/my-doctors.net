@@ -40,9 +40,8 @@ function App(props) {
       <Route path="signup" element={<PatientSignUp/>}/>
       <Route path = "doctor-register" element={<DoctorSignUp/>}/>
       </Route> 
-      <Route path="*" element={<NotFound/>}/>
-   
       </Route>
+      <Route path="*" element={<NotFound/>}/>
    </Routes>
    </>
   );

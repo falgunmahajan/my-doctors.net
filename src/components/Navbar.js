@@ -76,7 +76,7 @@ export default function Navbar({handleDrawerToggle}) {
 
                         </Grid>
                         <Grid item xs={4} order={{xs:3, lg:4}}  sx={{ textAlign: "right" }}>
-                            <Button variant="contained" href="/auth/login" sx={{ backgroundColor: "#3f51b5" }} >Login</Button>
+                            <Button variant="contained" onClick={()=>navigate("/auth/login")} sx={{ backgroundColor: "#3f51b5" }} >Login</Button>
                         </Grid>
                     </Grid>
              </Toolbar>

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import dashboard from "../dashboard.svg"
-import { Box, Card, CardActionArea, CardContent, CardMedia, Grid, Link, Typography } from '@mui/material'
+import { Box, Card, CardActionArea, CardContent, CardMedia, Grid,  Typography } from '@mui/material'
 import axios from 'axios'
 import ClipLoader from "react-spinners/ClipLoader";
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Dashboard() {
  const [speciality,setSpeciality]=useState()
  const[loading,setLoading]=useState(true)
-
+const navigate= useNavigate();
 useEffect(()=>{
  ( async()=>{
     const res=await axios.get("http://my-doctors.net:8090/specializations?$limit=100&$sort[name]=1")
@@ -43,9 +44,9 @@ console.log(speciality)
         cssOverride={{margin:"auto"}}/>
       }
       </Grid>
-      <Box sx={{display:"flex", justifyContent:"end", pr:2}}>
-      <Link href='/specialities' color="inherit" fontSize={18} underline='none' >View all Specialities...</Link>
-      </Box>
+      {speciality  && <Box sx={{display:"flex", justifyContent:"end", pr:2}}>
+      <Typography onClick={()=>navigate("/specialities")} fontSize={18} underline='none' sx={{cursor:"context-menu"}} >View all Specialities...</Typography>
+      </Box>}
     </>
   )
 }

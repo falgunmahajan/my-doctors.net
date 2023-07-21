@@ -1,24 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+// import './App.css';
+
+import { Route, Routes } from 'react-router-dom';
+import Login from './components/Login';
+import PatientSignUp from './components/PatientSignUp';
+import TabPage from './components/tabPage';
+import Dashboard from './components/Dashboard';
+import DoctorSignUp from './components/DoctorSignUp';
+import NotFound from './components/NotFound';
+import DoctorDashboard from './components/DoctorDashboard';
+import PatientDashboard from './components/PatientDashboard';
+import Specialities from './components/Specialities';
+import Navbar from './components/Navbar';
+
+import SideBar from './components/SideBar';
+import React, { useState } from 'react';
+
+const drawerWidth = 240;
+
+function App(props) {
+  const { window } = props;
+  const [mobileOpen, setMobileOpen] =useState(false);
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+    
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>    
+   <Routes>
+    <Route path="/" element={<Navbar handleDrawerToggle={handleDrawerToggle}/>}>
+     <Route path="/" element = {<SideBar handleDrawerToggle={handleDrawerToggle} window={window} drawerWidth={drawerWidth} mobileOpen={mobileOpen}/>}>
+     <Route path="/" element = {<Dashboard/> }/>
+     <Route path="/Doctors" element={<DoctorDashboard/>}/>
+      <Route path="/Patient" element={<PatientDashboard/>}/>
+      <Route path ="/specialities" element={<Specialities/>}/>
+     </Route>
+    <Route path="/auth" element={<TabPage/>} >
+      <Route path="login" element={<Login/>}/>
+      <Route path="signup" element={<PatientSignUp/>}/>
+      <Route path = "doctor-register" element={<DoctorSignUp/>}/>
+      </Route> 
+      <Route path="*" element={<NotFound/>}/>
+   
+      </Route>
+   </Routes>
+   </>
   );
 }
 
